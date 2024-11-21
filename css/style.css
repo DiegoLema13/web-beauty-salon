@@ -104,7 +104,7 @@ hr {
 
 #menu.navbar-default .navbar-nav > li > a {
 	text-transform: uppercase;
-	color: #ddd;
+	color: #FFFF94;
 	font-size: 15px;
 	font-weight: 400;
 	letter-spacing: 1px;
@@ -113,7 +113,7 @@ hr {
 	margin: 9px 20px 0 20px;
 }
 #menu.navbar-default .navbar-nav > li > a:hover {
-	color: #d2d21a;
+	color: #FFDF00;
 }
 
 .on {
@@ -195,7 +195,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', e
 	color: #fff;
 }
 .intro h1 {
-	color: #fff;
+	color: #FFFF94;
 	font-size: 64px;
 	font-weight: 700;
 	letter-spacing: -1px;
@@ -204,7 +204,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', e
 	text-transform: uppercase;
 }
 .intro p {
-	color: #fff;
+	color: #FFFF94;
 	font-size: 22px;
 	margin-top: 20px;
 	line-height: 28px;
