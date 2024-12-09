@@ -187,30 +187,62 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	outline-offset: none;
 }
 /* Header Section */
-.intro {
+header {
+	position: relative;
+	overflow: hidden;
+	height: 100vh; /* Asegura que el header siempre ocupa toda la altura */
+  }
+  
+  /* Fondo de video aislado */
+  header .video-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: -1; /* Envía el video al fondo */
+  }
+  
+  header .video-bg video {
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	object-fit: cover;
+  }
+  
+  /* Sección Intro */
+  header .intro {
+	position: relative; /* Asegura que el contenido se superpone correctamente */
+	z-index: 1;
 	display: table;
 	width: 100%;
+	height: 100%; /* Asegura que ocupa todo el header */
 	padding: 0;
-	background: url(../img/intro-bg.jpg) top center no-repeat;
-	background-color: #e5e5e5;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	background-size: cover;
-	-o-background-size: cover;
-}
-.intro .overlay {
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,70ad47+100&0.6+0,0.4+100 */
-	background: -moz-linear-gradient(top, rgba(0,0,0,0.6) 0%, rgba(112,173,71,0.4) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(0,0,0,0.6) 0%, rgba(112,173,71,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(112,173,71,0.4) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', endColorstr='#6670ad47', GradientType=0 ); /* IE6-9 */
-}
-.intro .fa {
+  }
+  
+  header .intro .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(112, 173, 71, 0.4) 100%);
+	z-index: 2;
+  }
+  
+  header .intro .fa {
 	font-size: 94px;
 	margin-bottom: 40px;
 	color: #fff;
-}
-.intro h1 {
+  }
+  
+  header .intro h1 {
 	color: #FFFF94;
 	font-size: 64px;
 	font-weight: 700;
@@ -218,23 +250,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', e
 	margin-top: 0;
 	margin-bottom: 10px;
 	text-transform: uppercase;
-}
-.intro p {
+  }
+  
+  header .intro p {
 	color: #FFFF94;
 	font-size: 22px;
 	margin-top: 20px;
 	line-height: 28px;
 	margin-bottom: 40px;
-}
-.intro .btn-custom {
-	border-top: 1px solid rgba(255,255,255,0.4);
-	border-bottom: 1px solid rgba(255,255,255,0.4);
-}
-header .intro-text {
+  }
+  
+  header .intro .btn-custom {
+	border-top: 1px solid rgba(255, 255, 255, 0.4);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  header .intro-text {
 	padding-top: 320px;
 	padding-bottom: 200px;
 	text-align: center;
-}
+  }
+  
 /* About Section */
 #about {
 	padding: 120px 0 80px 0;
