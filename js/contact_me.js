@@ -1,68 +1,33 @@
-$(function() {
+// Inicializar EmailJS con tu clave pública
+emailjs.init("tLFWl4w-YcDS7aRm-"); // Reemplaza "YOUR_PUBLIC_KEY" con tu clave pública
 
-    $("input,textarea").jqBootstrapValidation({
-        preventSubmit: true,
-        submitError: function($form, event, errors) {
-            // additional error messages or events
-        },
-        submitSuccess: function($form, event) {
-            event.preventDefault(); // prevent default submit behaviour
-            // get values from FORM
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var message = $("textarea#message").val();
-            var firstName = name; // For Success/Failure Message
-            // Check for white space in name for Success/Fail message
-            if (firstName.indexOf(' ') >= 0) {
-                firstName = name.split(' ').slice(0, -1).join(' ');
-            }
-            $.ajax({
-                url: "././mail/contact_me.php",
-                type: "POST",
-                data: {
-                    name: name,
-                    email: email,
-                    message: message
-                },
-                cache: false,
-                success: function() {
-                    // Success message
-                    $('#success').html("<div class='alert alert-success'>");
-                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
-                    $('#success > .alert-success')
-                        .append("<strong>Your message has been sent. </strong>");
-                    $('#success > .alert-success')
-                        .append('</div>');
+document.getElementById("contactForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevenir el envío por defecto
 
-                    //clear all fields
-                    $('#contactForm').trigger("reset");
-                },
-                error: function() {
-                    // Fail message
-                    $('#success').html("<div class='alert alert-danger'>");
-                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
-                    $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
-                    $('#success > .alert-danger').append('</div>');
-                    //clear all fields
-                    $('#contactForm').trigger("reset");
-                },
-            })
-        },
-        filter: function() {
-            return $(this).is(":visible");
-        },
-    });
+  // Obtener los valores del formulario
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
 
-    $("a[data-toggle=\"tab\"]").click(function(e) {
-        e.preventDefault();
-        $(this).tab("show");
-    });
-});
-
-
-/*When clicking on Full hide fail/success boxes */
-$('#name').focus(function() {
-    $('#success').html('');
+  // Enviar el correo mediante EmailJS
+  emailjs
+    .send("service_n773vms", "template_njj1r8l", {
+      name: name,
+      email: email,
+      message: message,
+    })
+    .then(
+      function () {
+        // Mostrar mensaje de éxito
+        document.getElementById("success").innerHTML =
+          "<div class='alert alert-success'>¡Tu mensaje ha sido enviado correctamente!</div>";
+        document.getElementById("contactForm").reset();
+      },
+      function (error) {
+        // Mostrar mensaje de error
+        document.getElementById("success").innerHTML =
+          "<div class='alert alert-danger'>Hubo un error al enviar tu mensaje. Por favor, inténtalo más tarde.</div>";
+        console.error("Error al enviar el mensaje:", error);
+      }
+    );
 });
