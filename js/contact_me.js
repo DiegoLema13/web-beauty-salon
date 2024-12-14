@@ -1,5 +1,5 @@
 // Inicializar EmailJS con tu clave pública
-emailjs.init("tLFWl4w-YcDS7aRm-"); // Reemplaza "YOUR_PUBLIC_KEY" con tu clave pública
+emailjs.init("fPuXl6OQ2T13VzgYh"); // Reemplaza "YOUR_PUBLIC_KEY" con tu clave pública
 
 document.getElementById("contactForm").addEventListener("submit", function (event) {
   event.preventDefault(); // Prevenir el envío por defecto
@@ -11,7 +11,7 @@ document.getElementById("contactForm").addEventListener("submit", function (even
 
   // Enviar el correo mediante EmailJS
   emailjs
-    .send("service_n773vms", "template_njj1r8l", {
+    .send("service_tjcc5o2", "template_6o3mp6d", {
       name: name,
       email: email,
       message: message,
